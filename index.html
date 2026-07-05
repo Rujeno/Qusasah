@@ -96,8 +96,27 @@
     background:var(--leaf);padding:0 .18em;display:inline-block;transform:rotate(-1.2deg);
     box-shadow:5px 5px 0 var(--ink);
   }
-  .hero p.lead{font-size:1.12rem;max-width:34rem;margin:28px 0 34px;color:#3E3D38}
-  .btn-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px}
+  .hero p.value-prop{
+    font-family:'Noto Kufi Arabic',sans-serif;font-weight:800;
+    font-size:clamp(1.15rem,2.4vw,1.5rem);max-width:36rem;margin-top:22px;
+  }
+  .hero p.lead{font-size:1.12rem;max-width:34rem;margin:16px 0 34px;color:#3E3D38}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+  .trust-strip{list-style:none;display:flex;flex-wrap:wrap;gap:10px 22px;margin-bottom:56px}
+  .trust-strip li{
+    display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:500;color:#3E3D38;
+  }
+  .trust-strip li::before{content:"✓";display:inline-grid;place-items:center;width:20px;height:20px;
+    background:var(--leaf);border:2px solid var(--ink);border-radius:50%;font-size:.7rem;font-weight:900;flex:none;
+  }
+  .hero-anim{opacity:0;transform:translateY(18px);animation:heroIn .7s ease forwards}
+  .hero-anim:nth-child(1){animation-delay:.05s}
+  .hero-anim:nth-child(2){animation-delay:.15s}
+  .hero-anim:nth-child(3){animation-delay:.25s}
+  .hero-anim:nth-child(4){animation-delay:.35s}
+  .hero-anim:nth-child(5){animation-delay:.45s}
+  .hero-anim:nth-child(6){animation-delay:.55s}
+  @keyframes heroIn{to{opacity:1;transform:none}}
   .btn{
     display:inline-block;font-family:inherit;font-weight:700;font-size:1rem;
     text-decoration:none;padding:15px 34px;border:var(--border);transition:all .15s;
@@ -171,7 +190,41 @@
   .stat:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);background:var(--leaf-bright)}
   .stat b{font-family:'Noto Kufi Arabic',sans-serif;font-weight:900;font-size:2.4rem;display:block;line-height:1.3}
   .stat span{font-size:.88rem;font-weight:500}
+  .stats .stat:nth-child(1){transition-delay:.05s}
+  .stats .stat:nth-child(2){transition-delay:.13s}
+  .stats .stat:nth-child(3){transition-delay:.21s}
+  .stats .stat:nth-child(4){transition-delay:.29s}
   @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+  /* ————— الدعوة للتواصل الجزئية ————— */
+  .inline-cta{
+    margin-top:56px;padding-top:40px;border-top:2px dashed var(--ink);
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .inline-cta p{font-family:'Noto Kufi Arabic',sans-serif;font-weight:800;font-size:1.2rem;max-width:26rem}
+  .services .inline-cta{border-color:var(--paper)}
+  .btn-sm{padding:12px 28px;font-size:.92rem;box-shadow:4px 4px 0 var(--ink)}
+  .btn-sm:hover{box-shadow:7px 7px 0 var(--ink)}
+  .services .btn-sm{box-shadow:4px 4px 0 var(--leaf)}
+  .services .btn-sm:hover{box-shadow:7px 7px 0 var(--leaf)}
+
+  /* ————— لماذا يثقون بنا ————— */
+  .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:44px}
+  .trust-card{
+    border:var(--border);box-shadow:var(--shadow-sm);background:var(--paper);
+    padding:26px 24px;transition:all .15s;
+  }
+  .trust-card:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--ink)}
+  .trust-ic{
+    display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--ink);border-radius:50%;
+    background:var(--leaf-bright);font-size:.95rem;margin-bottom:14px;
+  }
+  .trust-card b{font-family:'Noto Kufi Arabic',sans-serif;font-weight:800;font-size:1.05rem;display:block;margin-bottom:8px}
+  .trust-card p{font-size:.9rem;color:#3E3D38}
+  .trust-grid .trust-card:nth-child(1){transition-delay:.05s}
+  .trust-grid .trust-card:nth-child(2){transition-delay:.13s}
+  .trust-grid .trust-card:nth-child(3){transition-delay:.21s}
+  .trust-grid .trust-card:nth-child(4){transition-delay:.29s}
 
   /* ————— الخدمات (أكورديون) ————— */
   .services{background:var(--ink);color:var(--paper);
@@ -200,6 +253,7 @@
   .acc-item.open .acc-head:hover{background:var(--leaf)}
   .acc-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
   .acc-body-in{padding:6px 92px 30px;display:flex;flex-wrap:wrap;gap:10px}
+  .acc-desc{flex-basis:100%;color:#D9D7CA;font-size:.95rem;max-width:44rem;margin-bottom:6px}
   .chip{
     border:2px solid var(--paper);padding:7px 18px;font-size:.92rem;color:var(--paper);
     transition:all .15s;
@@ -213,24 +267,44 @@
     border:var(--border);box-shadow:var(--shadow);background:var(--paper);
     transition:transform .2s ease,box-shadow .2s ease;will-change:transform;position:relative;
   }
+  .work:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink)}
   .work .ph{
     aspect-ratio:4/3;display:grid;place-items:center;border-bottom:var(--border);
     background:repeating-linear-gradient(-45deg,var(--paper) 0 16px,#EFEEDD 16px 32px);
     font-size:.85rem;color:#6B6960;font-weight:500;
   }
   .work img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-bottom:var(--border)}
-  .work figcaption{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .work b{font-family:'Noto Kufi Arabic',sans-serif;font-weight:800;font-size:1.15rem;display:block}
-  .work small{color:#6B6960;font-size:.83rem}
-  .work .arrow{
-    width:44px;height:44px;border:var(--border);background:var(--leaf);flex:none;
-    display:grid;place-items:center;font-size:1.2rem;transition:transform .2s;
-  }
-  .work:hover .arrow{transform:rotate(-45deg)}
   .work .tag{
     position:absolute;top:14px;right:14px;background:var(--ink);color:var(--leaf-bright);
-    font-size:.75rem;font-weight:700;padding:4px 12px;transform:rotate(2deg);
+    font-size:.75rem;font-weight:700;padding:4px 12px;transform:rotate(2deg);z-index:2;
   }
+  .work-head{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:transparent;border:none;font-family:inherit;color:var(--ink);
+    padding:18px 22px;text-align:right;cursor:none;
+  }
+  @media(hover:none),(max-width:860px){.work-head{cursor:pointer}}
+  .work-head b{font-family:'Noto Kufi Arabic',sans-serif;font-weight:800;font-size:1.15rem;display:block}
+  .work-head small{color:#6B6960;font-size:.83rem}
+  .work-head .arrow{
+    width:44px;height:44px;border:var(--border);background:var(--leaf);flex:none;
+    display:grid;place-items:center;font-size:1.2rem;transition:transform .3s;
+  }
+  .work.open .work-head .arrow{transform:rotate(45deg)}
+  .work-body{max-height:0;overflow:hidden;transition:max-height .45s ease;border-top:0 solid var(--ink)}
+  .work.open .work-body{border-top:var(--border)}
+  .work-body-in{padding:16px 22px 22px;display:grid;gap:12px}
+  .work-body-in p{font-size:.9rem;color:#3E3D38}
+  .work-body-in b{color:var(--ink)}
+  .work-cta{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    text-decoration:none;color:var(--ink);gap:14px;padding:34px 22px;
+  }
+  .work-cta b{font-family:'Noto Kufi Arabic',sans-serif;font-weight:800;font-size:1.15rem}
+  .work-cta small{color:#6B6960}
+  .works-grid .work:nth-child(1){transition-delay:.05s}
+  .works-grid .work:nth-child(2){transition-delay:.15s}
+  .works-grid .work:nth-child(3){transition-delay:.25s}
 
   /* ————— لمن نعمل ————— */
   .who{background:var(--leaf);border-block:var(--border);padding:80px 0}
@@ -243,6 +317,12 @@
   .who-chip:nth-child(odd){transform:rotate(-1.4deg)}
   .who-chip:nth-child(even){transform:rotate(1.2deg)}
   .who-chip:hover{transform:rotate(0) translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);background:var(--ink);color:var(--paper)}
+  .who-row .who-chip:nth-child(1){transition-delay:.05s}
+  .who-row .who-chip:nth-child(2){transition-delay:.11s}
+  .who-row .who-chip:nth-child(3){transition-delay:.17s}
+  .who-row .who-chip:nth-child(4){transition-delay:.23s}
+  .who-row .who-chip:nth-child(5){transition-delay:.29s}
+  .who .inline-cta{border-color:var(--ink);margin-top:44px;padding-top:36px}
 
   /* ————— لماذا قصاصة ————— */
   .why-inner{max-width:52rem;margin-inline:auto;text-align:center}
@@ -295,6 +375,7 @@
     .reveal{opacity:1;transform:none;transition:none}
     .marquee-track{animation:none}
     .badge{animation:none}
+    .hero-anim{opacity:1;transform:none;animation:none}
     *{transition:none!important}
   }
 </style>
@@ -314,6 +395,7 @@
       </a>
       <ul class="nav-links">
         <li><a href="#about">من نحن</a></li>
+        <li><a href="#trust">لماذا يثقون بنا</a></li>
         <li><a href="#services">خدماتنا</a></li>
         <li><a href="#works">أعمالنا</a></li>
         <li><a href="#why">لماذا قصاصة</a></li>
@@ -329,16 +411,23 @@
   <section class="hero">
     <div class="wrap hero-top">
       <div>
-        <span class="kicker">وكالة إبداعية سعودية <em>✦</em> نعمل عن بُعد</span>
-        <h1>
+        <span class="kicker hero-anim">وكالة إبداعية سعودية <em>✦</em> نعمل عن بُعد</span>
+        <h1 class="hero-anim">
           كل علامةٍ <span class="outline">عظيمة</span><br>
           بدأت <span class="hl">بقصاصة.</span>
         </h1>
-        <p class="lead">نرافق المشاريع من لحظة الإلهام الأولى — نحوّل القصاصات إلى هويات، والأسطر الأولى إلى علامات تنافس وتُلهم وتبقى في الذاكرة.</p>
-        <div class="btn-row">
+        <p class="value-prop hero-anim">نبني علامات تجارية تُرى، وتُتذكر، وتُحدث أثرًا — من الفكرة الأولى إلى الحضور الكامل في السوق.</p>
+        <p class="lead hero-anim">نرافق المشاريع من لحظة الإلهام الأولى — نحوّل القصاصات إلى هويات، والأسطر الأولى إلى علامات تنافس وتُلهم وتبقى في الذاكرة.</p>
+        <div class="btn-row hero-anim">
           <a class="btn btn-green" href="#contact">ابدأ قصاصتك</a>
           <a class="btn btn-ink" href="#works">شاهد أعمالنا</a>
         </div>
+        <ul class="trust-strip hero-anim" aria-label="مزايا العمل معنا">
+          <li>هوية بصرية متكاملة</li>
+          <li>مراجعات حتى الرضا التام</li>
+          <li>التزام بالمواعيد</li>
+          <li>فريق سعودي متخصص</li>
+        </ul>
       </div>
       <div class="hero-sticker" data-tilt>
         <div class="badge">فكرة ✦ هوية ✦ علامة</div>
@@ -384,12 +473,33 @@
           <p>الاسم عندنا أكثر من مجرد اسم — إنه فلسفة تحوّل كل شرارة إلى قصة تستحق أن تُروى، وكل حلم إلى علامة تستحق أن تُتذكَّر.</p>
           <p>نبدأ من حيث لا ينظر السوق: من الصفحة الأولى، ومن الفكرة الخجولة، ومن الاسم المهموس — ونحوّله إلى علامة آسرة.</p>
         </div>
-        <div class="stats reveal">
-          <div class="stat"><b><span data-count="6">0</span></b><span>مسارات خدمات متكاملة</span></div>
-          <div class="stat"><b><span data-count="5">0</span></b><span>قيم لا نساوم عليها</span></div>
-          <div class="stat"><b><span data-count="100">0</span>٪</b><span>شغف بالبدايات</span></div>
-          <div class="stat"><b>١</b><span>نبدأ دائمًا من قصاصة واحدة</span></div>
+        <div class="stats">
+          <div class="stat reveal"><b><span data-count="6">0</span></b><span>مسارات خدمات متكاملة</span></div>
+          <div class="stat reveal"><b><span data-count="5">0</span></b><span>قيم لا نساوم عليها</span></div>
+          <div class="stat reveal"><b><span data-count="100">0</span>٪</b><span>شغف بالبدايات</span></div>
+          <div class="stat reveal"><b>١</b><span>نبدأ دائمًا من قصاصة واحدة</span></div>
         </div>
+      </div>
+      <div class="inline-cta reveal">
+        <p>جاهزة تحوّلين فكرتك إلى علامة؟</p>
+        <a class="btn btn-green btn-sm" href="#contact">احجزي استشارة مجانية ←</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ————— لماذا يثقون بنا ————— -->
+  <section id="trust">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-label">لماذا يثقون بنا</span>
+        <h2>معايير عمل تبني الثقة قبل أي مشروع</h2>
+        <p>ما زلنا نوثّق قصص عملائنا، لكن منهجية عملنا هي ما يضمن لك نتيجة تستحق الثقة من أول تعامل.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card reveal"><span class="trust-ic">✦</span><b>عملية عمل واضحة</b><p>من الجلسة الأولى إلى التسليم النهائي، تعرفين كل خطوة ومتى تحصلين عليها.</p></div>
+        <div class="trust-card reveal"><span class="trust-ic">✦</span><b>مراجعات غير محدودة</b><p>نعمل معك حتى تصلي لهوية تمثلك فعلًا، دون رسوم إضافية على التعديلات المتفق عليها.</p></div>
+        <div class="trust-card reveal"><span class="trust-ic">✦</span><b>تسليم في الموعد</b><p>نلتزم بالجدول الزمني المتفق عليه من أول يوم، ونحدّثك بأي مستجد أولًا بأول.</p></div>
+        <div class="trust-card reveal"><span class="trust-ic">✦</span><b>تنوع في القطاعات</b><p>من المشاريع العقارية والنسائية إلى المطاعم والمبادرات الثقافية والفنية.</p></div>
       </div>
     </div>
   </section>
@@ -417,6 +527,7 @@
           </button>
           <div class="acc-body">
             <div class="acc-body-in">
+              <p class="acc-desc">نحدد جوهر علامتك واسمها ورسالتها وقصتها بطريقة تميّزها عن المنافسين وتجعلها قريبة من جمهورها المستهدف.</p>
               <span class="chip">تسمية العلامات التجارية</span>
               <span class="chip">تطوير الشعارات اللفظية والرسائل</span>
               <span class="chip">سرد قصة العلامة</span>
@@ -430,6 +541,7 @@
           </button>
           <div class="acc-body">
             <div class="acc-body-in">
+              <p class="acc-desc">نصمم كل ما تحتاجينه لعلامة متكاملة بصريًا: من الشعار وأنظمة الألوان والخطوط، إلى المطبوعات والعروض التي تعكس هويتك في كل تفصيلة.</p>
               <span class="chip">تصميم الشعارات</span>
               <span class="chip">أنظمة الهوية البصرية</span>
               <span class="chip">البوسترات</span>
@@ -444,6 +556,7 @@
           </button>
           <div class="acc-body">
             <div class="acc-body-in">
+              <p class="acc-desc">نكتب وننتج محتوى يتحدث بلغة جمهورك على إنستغرام وتيك توك، من فكرة السكربت إلى المونتاج، بما يخدم حضورك اليومي على المنصات.</p>
               <span class="chip">كتابة السكربتات الإعلانية</span>
               <span class="chip">حملات إنستغرام وتيك توك</span>
               <span class="chip">مونتاج الفيديو القصير</span>
@@ -458,6 +571,7 @@
           </button>
           <div class="acc-body">
             <div class="acc-body-in">
+              <p class="acc-desc">نجهز كل ما يلزم ليوم الإطلاق: من التغليف والمواد الترويجية إلى صفحة الهبوط وحملة الافتتاح، لنضمن انطلاقة قوية وانطباعًا أول لا يُنسى.</p>
               <span class="chip">حقائب ومواد الإطلاق</span>
               <span class="chip">التغليف وملصقات العلامة</span>
               <span class="chip">حملات الافتتاح</span>
@@ -472,6 +586,7 @@
           </button>
           <div class="acc-body">
             <div class="acc-body-in">
+              <p class="acc-desc">نجلس معك في جلسات عصف ذهني وتقييم لتحديد نقاط القوة والفرص في هويتك الحالية أو الناشئة، ونضع خارطة طريق واضحة للتطوير.</p>
               <span class="chip">جلسات التفكير والعصف الذهني</span>
               <span class="chip">تقييم وتموضع الهوية</span>
               <span class="chip">تطوير علامات المشاريع الناشئة</span>
@@ -484,6 +599,7 @@
           </button>
           <div class="acc-body">
             <div class="acc-body-in">
+              <p class="acc-desc">نحوّل بياناتك الخام إلى لوحات معلومات تفاعلية بهوية علامتك، تساعدك على اتخاذ قرارات مبنية على أرقام واضحة لا تخمين.</p>
               <span class="chip">تحليل البيانات واستخلاص الرؤى</span>
               <span class="chip">تصميم لوحات معلومات Power BI</span>
               <span class="chip">تقارير تفاعلية بهوية علامتك</span>
@@ -492,6 +608,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="inline-cta reveal">
+        <p>وجدتِ المسار المناسب لمشروعك؟</p>
+        <a class="btn btn-green btn-sm" href="#contact">لنتحدث عن مشروعك ←</a>
       </div>
     </div>
   </section>
@@ -502,34 +622,49 @@
       <div class="sec-head reveal">
         <span class="sec-label">أعمالنا</span>
         <h2>قصاصات صارت علامات</h2>
-        <p>نماذج من مشاريع رافقناها من الفكرة الأولى حتى الحضور الكامل.</p>
+        <p>نماذج من مشاريع رافقناها من الفكرة الأولى حتى الحضور الكامل. اضغطي على أي مشروع لمعرفة التحدي والحل.</p>
       </div>
       <div class="works-grid">
         <!-- لاستبدال أي عمل بصورة: احذفي div.ph وضعي: <img src="اسم-الصورة.jpg" alt="وصف العمل"> -->
-        <figure class="work reveal" data-tilt>
+        <!-- التحدي/الحل/النتيجة نص مبدئي — عدّليه بتفاصيل كل مشروع الحقيقية -->
+        <article class="work reveal" data-tilt>
           <span class="tag">هوية بصرية</span>
           <div class="ph">صورة المشروع</div>
-          <figcaption>
+          <button class="work-head" aria-expanded="false">
             <div><b>بوابة العقار</b><small>Real Estate Gate</small></div>
             <span class="arrow">←</span>
-          </figcaption>
-        </figure>
-        <figure class="work reveal" data-tilt>
+          </button>
+          <div class="work-body">
+            <div class="work-body-in">
+              <p><b>التحدي:</b> عرض عقاري يحتاج هوية بصرية تعكس الثقة والاحترافية في قطاع مزدحم بالمنافسين.</p>
+              <p><b>الحل:</b> صممنا هوية متكاملة من الشعار إلى نظام الألوان والخطوط بما يعكس الرسوخ والثقة.</p>
+              <p><b>الهوية المُسلَّمة:</b> شعار، دليل هوية بصرية، وقوالب تسويقية جاهزة للاستخدام.</p>
+              <p><b>النتيجة:</b> حضور بصري موحّد عبر جميع نقاط تواصل العلامة مع عملائها.</p>
+            </div>
+          </div>
+        </article>
+        <article class="work reveal" data-tilt>
           <span class="tag">هوية بصرية</span>
           <div class="ph">صورة المشروع</div>
-          <figcaption>
+          <button class="work-head" aria-expanded="false">
             <div><b>الهنداوية</b><small>AlHindawiya</small></div>
             <span class="arrow">←</span>
-          </figcaption>
-        </figure>
-        <figure class="work reveal" data-tilt>
+          </button>
+          <div class="work-body">
+            <div class="work-body-in">
+              <p><b>التحدي:</b> علامة تحتاج هوية تحمل طابعًا أصيلًا يميّزها ويقرّبها من جمهورها.</p>
+              <p><b>الحل:</b> بنينا هوية بصرية وقصة علامة تنبع من جوهرها الأصيل وتناسب حضورها في السوق.</p>
+              <p><b>الهوية المُسلَّمة:</b> شعار، هوية بصرية متكاملة، ومحتوى إطلاق أولي.</p>
+              <p><b>النتيجة:</b> علامة بهوية واضحة وقابلة للتوسع مع نمو المشروع.</p>
+            </div>
+          </div>
+        </article>
+        <a class="work work-cta reveal" href="#contact" data-tilt>
           <span class="tag">قريبًا</span>
-          <div class="ph">صورة المشروع</div>
-          <figcaption>
-            <div><b>مشروعك القادم</b><small>هذه المساحة تنتظرك</small></div>
-            <span class="arrow">←</span>
-          </figcaption>
-        </figure>
+          <b>مشروعك القادم</b>
+          <small>هذه المساحة تنتظرك — لنبدأ قصاصتك</small>
+          <span class="btn btn-green btn-sm">احجزي استشارة مجانية ←</span>
+        </a>
       </div>
     </div>
   </section>
@@ -540,12 +675,16 @@
       <div class="reveal">
         <h2>نعمل مع أصحاب البدايات الجريئة</h2>
         <div class="who-row">
-          <span class="who-chip">روّاد أعمال يبحثون عن انطلاقة مميزة</span>
-          <span class="who-chip">مشاريع نسائية يقودها الإبداع</span>
-          <span class="who-chip">علامات حرفية وطبيعية</span>
-          <span class="who-chip">مطاعم ومقاهٍ بهوية لها نكهة</span>
-          <span class="who-chip">مبادرات فنية وثقافية</span>
+          <span class="who-chip reveal">روّاد أعمال يبحثون عن انطلاقة مميزة</span>
+          <span class="who-chip reveal">مشاريع نسائية يقودها الإبداع</span>
+          <span class="who-chip reveal">علامات حرفية وطبيعية</span>
+          <span class="who-chip reveal">مطاعم ومقاهٍ بهوية لها نكهة</span>
+          <span class="who-chip reveal">مبادرات فنية وثقافية</span>
         </div>
+      </div>
+      <div class="inline-cta reveal">
+        <p>تعرفتِ على نفسك في إحدى هذه الفئات؟</p>
+        <a class="btn btn-ink btn-sm" href="#contact">راسلينا الآن ←</a>
       </div>
     </div>
   </section>
@@ -615,7 +754,7 @@
     addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; dot.style.transform = `translate(${x}px,${y}px) translate(-50%,-50%)`; });
     (function loop(){ cx += (x - cx) * .18; cy += (y - cy) * .18;
       cur.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
-    document.querySelectorAll('a,button,.chip,.stat,.who-chip').forEach(el => {
+    document.querySelectorAll('a,button,.chip,.stat,.who-chip,.trust-card').forEach(el => {
       el.addEventListener('mouseenter', () => cur.classList.add('grow'));
       el.addEventListener('mouseleave', () => cur.classList.remove('grow'));
     });
@@ -656,6 +795,19 @@
         body.style.maxHeight = body.scrollHeight + 'px';
         head.setAttribute('aria-expanded', 'true');
       }
+    });
+  });
+
+  /* دراسات حالة الأعمال */
+  document.querySelectorAll('.work[data-tilt]').forEach(item => {
+    const head = item.querySelector('.work-head');
+    const body = item.querySelector('.work-body');
+    if (!head || !body) return;
+    head.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+      head.setAttribute('aria-expanded', String(!isOpen));
+      body.style.maxHeight = isOpen ? null : body.scrollHeight + 'px';
     });
   });
 
